@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Як видалити акаунт — інструкція</title>
+  <style>
+    :root{--bg:#f7fafc;--card:#ffffff;--accent:#0b74de;--muted:#6b7280}
+    body{font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; background:var(--bg); color:#0f172a; margin:0; padding:24px; display:flex; justify-content:center}
+    .container{max-width:760px; width:100%}
+    .card{background:var(--card); border-radius:12px; box-shadow:0 6px 18px rgba(15,23,42,0.06); padding:28px}
+    h1{font-size:22px; margin:0 0 8px}
+    p.lead{margin:0 0 18px; color:var(--muted)}
+    ol.steps{padding-left:18px}
+    .step{background:#f1f5f9; border-radius:8px; padding:14px; margin:12px 0; display:flex; gap:12px; align-items:flex-start}
+    .step .num{background:var(--accent); color:#fff; font-weight:600; width:36px; height:36px; border-radius:8px; display:flex; align-items:center; justify-content:center}
+    .step .content{font-size:15px}
+    .note{margin-top:18px; padding:16px; background:#fff7ed; border-left:4px solid #f59e0b; border-radius:8px}
+    .footer{margin-top:18px; font-size:14px; color:var(--muted)}
+    a.bot{color:var(--accent); text-decoration:none; font-weight:600}
+    .actions{display:flex; gap:8px; margin-top:18px}
+    .btn{background:var(--accent); color:#fff; border:none; padding:10px 14px; border-radius:8px; cursor:pointer}
+    .btn.secondary{background:#eef2ff; color:#0b74de}
+    @media (max-width:520px){body{padding:12px}.card{padding:18px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card" role="main">
+      <h1>Інструкція: як видалити акаунт у додатку</h1>
+      <p class="lead">Коротка покрокова інструкція, щоб остаточно видалити свій профіль.</p>
+
+      <ol class="steps" aria-label="Кроки для видалення акаунту">
+        <li class="step" aria-labelledby="step1">
+          <div class="num" id="step1">1</div>
+          <div class="content">У додатку перейдіть на вкладку <strong>Профіль</strong> → <strong>Налаштування профілю</strong>.</div>
+        </li>
+
+        <li class="step" aria-labelledby="step2">
+          <div class="num" id="step2">2</div>
+          <div class="content">Натисніть кнопку <strong>Видалити профіль</strong>.</div>
+        </li>
+
+        <li class="step" aria-labelledby="step3">
+          <div class="num" id="step3">3</div>
+          <div class="content">Підтвердіть видалення, натиснувши кнопку <strong>Підтверджую</strong> в спливаючому вікні.</div>
+        </li>
+      </ol>
+
+      <div class="note" role="note">
+        <p><strong>Що відбувається після видалення акаунту:</strong></p>
+        <p>Коли користувач видаляє акаунт у додатку, видаляється вся його приватна інформація. Оскільки на етапі реєстрації з персональних даних користувач вводить тільки свій номер телефону та місто, ця інформація одразу видаляється з бази даних. Акаунт позначається як видалений, але додаткова інформація з нього і надалі використовується в додатку. Зокрема — нікнейм, який використовувався для ігор; ці ігри пов'язані між даним користувачем та іншими користувачами. Після видалення акаунту користувач втратить доступ до своїх зіграних ігор, і при наступній реєстрації буде створюватися новий акаунт.</p>
+      </div>
+
+      <div class="footer">
+        <p>Якщо акаунт не видаляється або потрібна технічна допомога — зверніться до телеграм‑бота підтримки: <a class="bot" href="https://t.me/karambol_pool_bot" target="_blank" rel="noopener">@karambol_pool_bot</a></p>
+      </div>
+
+      <div class="actions" aria-hidden="false">
+        <button class="btn" onclick="window.print()">Друк сторінки</button>
+        <button class="btn secondary" onclick="downloadHtml()">Завантажити HTML</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function downloadHtml(){
+      const content = `<!doctype html>\n${document.documentElement.outerHTML}`;
+      const blob = new Blob([content], { type: 'text/html;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'delete-account-instructions.html';
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+  </script>
+</body>
+</html>
